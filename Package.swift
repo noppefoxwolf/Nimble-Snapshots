@@ -8,7 +8,7 @@ let package = Package(
     platforms: [.iOS(.v10)],
     products: [
         .library(
-            name: "NimbleSnapshots",
+            name: "Nimble_Snapshots",
             targets: ["NimbleSnapshotsObjC"]),
     ],
     dependencies: [
