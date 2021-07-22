@@ -207,12 +207,12 @@ private func performSnapshotTest(_ name: String?,
     // swiftlint:disable:next force_try force_unwrapping
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
-    let referenceImageDirectory = getDefaultReferenceDirectory(testFileLocation)
+    let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)
     let snapshotName = sanitizedTestName(name)
     let tolerance = tolerance ?? getTolerance()
     let pixelTolerance = pixelTolerance ?? getPixelTolerance()
 
-    let result = FBSnapshotTest.compareSnapshot(instance, isDeviceAgnostic: isDeviceAgnostic,
+    let result = FBSnapshotTest._compareSnapshot(instance, isDeviceAgnostic: isDeviceAgnostic,
                                                 usesDrawRect: usesDrawRect, snapshot: snapshotName, record: false,
                                                 referenceDirectory: referenceImageDirectory, tolerance: tolerance,
                                                 perPixelTolerance: pixelTolerance,
@@ -231,13 +231,13 @@ private func recordSnapshot(_ name: String?,
     // swiftlint:disable:next force_try force_unwrapping
     let instance = try! actualExpression.evaluate()!
     let testFileLocation = actualExpression.location.file
-    let referenceImageDirectory = getDefaultReferenceDirectory(testFileLocation)
+    let referenceImageDirectory = _getDefaultReferenceDirectory(testFileLocation)
     let snapshotName = sanitizedTestName(name)
     let tolerance = getTolerance()
     let pixelTolerance = getPixelTolerance()
     var message: String = ""
 
-    if FBSnapshotTest.compareSnapshot(instance,
+    if FBSnapshotTest._compareSnapshot(instance,
                                       isDeviceAgnostic: isDeviceAgnostic,
                                       usesDrawRect: usesDrawRect,
                                       snapshot: snapshotName,
